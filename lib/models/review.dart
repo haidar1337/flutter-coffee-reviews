@@ -43,7 +43,7 @@ class Review {
     required this.imageUrl,
   })  : description = description ?? '',
         brewingMethod = brewingMethod ?? BrewingMethod.any,
-        stars = 0,
+        stars = stars ?? 0,
         createdAt = createdAt ?? Timestamp.now(),
         createdBy = createdBy ?? FirebaseAuth.instance.currentUser!.uid,
         id = id ?? uuid.v4();
