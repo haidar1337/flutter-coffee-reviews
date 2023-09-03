@@ -8,9 +8,13 @@ import 'package:speciality_coffee_review/models/review.dart';
 import '../utilities/util.dart';
 
 class ReviewDatabase {
+  static final firebaseFirestore = FirebaseFirestore.instance;
+  static final firebaseAuth = FirebaseAuth.instance;
+  static final firebaseStorage = FirebaseStorage.instance;
+
   static void createReview(Review review) async {
-    final user = FirebaseAuth.instance.currentUser;
-    await FirebaseFirestore.instance.collection('reviews').doc(review.id).set({
+    final user = firebaseAuth.currentUser;
+    await firebaseFirestore.collection('reviews').doc(review.id).set({
       'description': review.description,
       'name': review.coffeeName,
       'price': review.coffeePrice,
@@ -26,13 +30,19 @@ class ReviewDatabase {
   }
 
   static Future<String> getImageUrl(File image) async {
-    final imageRef = FirebaseStorage.instance
-        .ref()
-        .child('review_images')
-        .child('${uuid.v4()}.jpg');
+    final imageRef =
+        firebaseStorage.ref().child('review_images').child('${uuid.v4()}.jpg');
 
     await imageRef.putFile(image);
     final imageUrl = await imageRef.getDownloadURL();
     return imageUrl;
+  }
+
+  static Future<List<dynamic>> getStarredReviews() async {
+    final user = firebaseAuth.currentUser;
+    final doc =
+        await firebaseFirestore.collection('users').doc(user!.uid).get();
+    List<dynamic> starredReviews = doc.data()!['starred'];
+    return starredReviews;
   }
 }

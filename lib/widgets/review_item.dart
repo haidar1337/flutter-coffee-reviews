@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speciality_coffee_review/models/review.dart';
 import 'package:speciality_coffee_review/utilities/util.dart';
+import 'package:speciality_coffee_review/widgets/star_button.dart';
 
 class ReviewItem extends StatelessWidget {
   const ReviewItem({
@@ -144,24 +145,7 @@ class ReviewItem extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              SizedBox(
-                width: 40,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.star_border),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  review.stars.toString(),
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              ),
+              StarButton(review: review)
             ],
           ),
         ]),

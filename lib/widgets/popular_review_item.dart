@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:speciality_coffee_review/models/review.dart';
+import 'package:speciality_coffee_review/widgets/star_button.dart';
 
 import '../utilities/util.dart';
 
@@ -147,21 +148,7 @@ class PopularReviewItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-                SizedBox(
-                  width: 40,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.star_border),
-                  ),
-                ),
-                Text(
-                  review.stars.toString(),
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
+                StarButton(review: review),
               ]),
             ),
           ],

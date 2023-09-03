@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:speciality_coffee_review/models/authentication_handler.dart';
 import 'package:speciality_coffee_review/screens/posts.dart';
 import 'package:speciality_coffee_review/widgets/authentication_text_field.dart';
 
@@ -15,8 +15,6 @@ class AuthenticationScreen extends StatefulWidget {
 
 class _AuthenticationScreenState extends State<AuthenticationScreen> {
   final _form = GlobalKey<FormState>();
-  final _firebaseAuth = FirebaseAuth.instance;
-  final _firebaseFirestore = FirebaseFirestore.instance;
 
   var _isLogin = false;
   var _email = '';
@@ -37,20 +35,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
 
     try {
       if (_isLogin) {
-        await _firebaseAuth.signInWithEmailAndPassword(
-            email: _email, password: _password);
+        AuthenticationHandler.login(_email, _password);
       } else {
-        final newUser = await _firebaseAuth.createUserWithEmailAndPassword(
-            email: _email, password: _password);
-        await _firebaseFirestore
-            .collection('users')
-            .doc(newUser.user!.uid)
-            .set({
-          'username': _username,
-          'email': _email,
-          'userId': newUser.user!.uid,
-          'starred': [],
-        });
+        AuthenticationHandler.register(_email, _password, _username);
       }
     } on FirebaseAuthException catch (exception) {
       ScaffoldMessenger.of(context).clearSnackBars();
