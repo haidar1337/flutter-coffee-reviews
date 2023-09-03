@@ -49,6 +49,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
           'username': _username,
           'email': _email,
           'userId': newUser.user!.uid,
+          'starred': [],
         });
       }
     } on FirebaseAuthException catch (exception) {

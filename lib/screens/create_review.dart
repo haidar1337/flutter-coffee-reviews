@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:speciality_coffee_review/models/review_database.dart';
 import 'package:speciality_coffee_review/widgets/bottom_sheet_buttons.dart';
 import 'package:speciality_coffee_review/widgets/description_dialog.dart';
 import 'package:speciality_coffee_review/widgets/review_image_picker.dart';
@@ -42,21 +43,9 @@ class _ReviewBottomSheetState extends ConsumerState<CreateReviewScreen> {
 
     _formKey.currentState!.save();
 
-    final imageRef = FirebaseStorage.instance
-        .ref()
-        .child('review_images')
-        .child('${uuid.v4()}.jpg');
+    image ??= await getImageFileFromAssets('coffee.jpg');
+    final imageUrl = await ReviewDatabase.getImageUrl(image!);
 
-    late File assetImageFile;
-
-    if (image == null) {
-      assetImageFile = await getImageFileFromAssets('coffee.jpg');
-    }
-
-    await imageRef.putFile(image != null ? image! : assetImageFile);
-    final imageUrl = await imageRef.getDownloadURL();
-
-    final user = FirebaseAuth.instance.currentUser;
     final review = Review(
       description,
       brewingMethod,
@@ -67,19 +56,7 @@ class _ReviewBottomSheetState extends ConsumerState<CreateReviewScreen> {
       region: region,
     );
 
-    await FirebaseFirestore.instance.collection('reviews').doc(review.id).set({
-      'description': description,
-      'name': name,
-      'price': price,
-      'region': region.name,
-      'brewingMethod': brewingMethod!.name,
-      'roastery': roastery,
-      'id': review.id,
-      'image_url': imageUrl,
-      'createdBy': user!.uid,
-      'createdAt': Timestamp.now(),
-      'stars': 0,
-    });
+    ReviewDatabase.createReview(review);
 
     return true;
   }

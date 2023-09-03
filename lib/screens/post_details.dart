@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:speciality_coffee_review/utilities/util.dart';
+import 'package:speciality_coffee_review/widgets/star_button.dart';
 
 import '../models/review.dart';
 import '../widgets/bookmark_button.dart';
@@ -39,20 +40,7 @@ class PostDetailsScreen extends StatelessWidget {
                       ),
                 ),
                 const Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.star_border,
-                    size: 30,
-                    color: Theme.of(context).colorScheme.onSurface,
-                  ),
-                ),
-                Text(review.stars.toString(),
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        )),
+                StarButton(review: review),
               ],
             ),
             const SizedBox(

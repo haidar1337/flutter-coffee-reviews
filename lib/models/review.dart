@@ -27,7 +27,7 @@ class Review {
   final String imageUrl;
   final String createdBy;
   final Timestamp createdAt;
-  final int stars;
+  int stars;
 
   Review(
     String? description,
@@ -47,4 +47,20 @@ class Review {
         createdAt = createdAt ?? Timestamp.now(),
         createdBy = createdBy ?? FirebaseAuth.instance.currentUser!.uid,
         id = id ?? uuid.v4();
+
+  int getStars() {
+    return stars;
+  }
+
+  String getImageUrl() {
+    return imageUrl;
+  }
+
+  void incrementStars() {
+    stars = stars + 1;
+  }
+
+  void decrementStars() {
+    stars = stars - 1;
+  }
 }
