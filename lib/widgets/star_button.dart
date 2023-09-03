@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speciality_coffee_review/models/review.dart';
 
@@ -12,16 +11,10 @@ class StarButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stsProvider = ref.watch(starsProvider);
-    var stars = review.stars;
-    print(stsProvider);
-
     return Row(
       children: [
         IconButton(
-          onPressed: () async {
-            stars = await ref.read(starsProvider.notifier).toggleStar(review);
-          },
+          onPressed: () {},
           icon: Icon(
             Icons.star_border,
             size: 30,
@@ -29,7 +22,7 @@ class StarButton extends ConsumerWidget {
           ),
         ),
         Text(
-          stars.toString(),
+          review.stars.toString(),
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: Theme.of(context).colorScheme.onSurface,
                 fontWeight: FontWeight.bold,
