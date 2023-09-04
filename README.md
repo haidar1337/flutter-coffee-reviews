@@ -16,7 +16,7 @@ To get this project working in your machine, please follow the instructions:
 Start by cloning this repository by running:
 
 ```git
-git clone [repo link]
+git clone [[repo link]](https://github.com/Rushchu/flutter_coffee_review.git)
 ```
 
 Next, connect the project with a Firebase project by running:
