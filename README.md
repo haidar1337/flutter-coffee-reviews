@@ -1,32 +1,42 @@
-# speciality_coffee_review
+# Flutter Coffee Reviews App
 
-An app that allows users to review speciality coffee to help others pick the best coffee bags.  
+Want to find what specialty coffee is delicious? Or want to help others finding delicious or budget friendly coffee?   
+Then this app is for you!  
 
-## Getting Started
+Create a review about a specialty coffee you tried recently and share it on the app, and others will be able to read your review.
+Save reviews in your bookmarks so you never forget about them. You read a review and it was helpful? Star the review to support the review creator and move it up to the popular reviews' list!.
 
-Features:
+*More features to be added...*
 
-- Sign Up
-- Log In
-- Log In as Guest
-- Post Coffee Review
-  - Name
-  - Roastery
-  - Price
-  - Region
-  - Notes
-  - Description
-  - Ice or Hot
-  - Image (optional)
-- View Coffee Reviews
-- Filter Coffee Reviews by Region
-- Save Coffee Reviews
-- Like Coffee Reviews
 
-Screens:
+##  Get Started
 
-- Sign Up/Login Screen
-- Coffee Reviews Screen
-- Saved Reviews Screen
+To get this project working in your machine, please follow the instructions:
 
-Bottom navigation bar to switch from coffee reviews screen to saved reviews screen.
+Start by cloning this repository by running:
+
+```git
+git clone [repo link]
+```
+
+Next, connect the project with a Firebase project by running:
+```bash
+flutterfire configure
+```
+
+* **Note: You need to have Firebase SDK and CLI installed in your machine.**
+* *This app has been tested on Android devices only.*
+* *you may need to run the following command for the project to work:*
+```flutter
+flutter pub upgrade
+```
+
+
+## Contributing
+
+For the time being, There is no criteria for PRs, and any pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
