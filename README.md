@@ -16,7 +16,7 @@ To get this project working in your machine, please follow the instructions:
 Start by cloning this repository by running:
 
 ```git
-git clone [[repo link]](https://github.com/Rushchu/flutter_coffee_review.git)
+git clone https://github.com/Rushchu/flutter_coffee_review.git
 ```
 
 Next, connect the project with a Firebase project by running:
@@ -36,3 +36,6 @@ flutter pub upgrade
 
 For the time being, There is no criteria for PRs, and any pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
+
+
+*You can contact me at haidar.abugurain@gmail.com for inquiries or suggestions*
