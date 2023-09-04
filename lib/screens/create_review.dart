@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speciality_coffee_review/models/review_database.dart';
-import 'package:speciality_coffee_review/widgets/bottom_sheet_buttons.dart';
+import 'package:speciality_coffee_review/widgets/creation_button.dart';
 import 'package:speciality_coffee_review/widgets/description_dialog.dart';
 import 'package:speciality_coffee_review/widgets/review_image_picker.dart';
 import 'package:speciality_coffee_review/widgets/review_text_field.dart';
@@ -252,7 +252,7 @@ class _ReviewBottomSheetState extends ConsumerState<CreateReviewScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  BottomSheetButtons(onCreatePost: createPost),
+                  CreationButton(onCreatePost: createPost),
                 ],
               ),
             ),

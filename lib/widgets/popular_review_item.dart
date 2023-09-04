@@ -30,7 +30,7 @@ class PopularReviewItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
-              review.imageUrl,
+              review.getImageUrl(),
               width: 250,
               height: 89,
               fit: BoxFit.cover,
@@ -40,11 +40,11 @@ class PopularReviewItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
               child: Row(children: [
                 Text(
-                  review.coffeeName.substring(
+                  review.getCoffeeName().substring(
                       0,
-                      review.coffeeName.length > 12
+                      review.getCoffeeName().length > 12
                           ? 12
-                          : review.coffeeName.length),
+                          : review.getCoffeeName().length),
                   maxLines: 1,
                   overflow: TextOverflow.clip,
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -56,9 +56,9 @@ class PopularReviewItem extends StatelessWidget {
                 const Spacer(),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: review.brewingMethod != BrewingMethod.any
+                  child: review.getBrewingMethod() != BrewingMethod.any
                       ? Image.asset(
-                          correspondingIcon[review.brewingMethod]!,
+                          correspondingIcon[review.getBrewingMethod()]!,
                           color: Theme.of(context)
                               .colorScheme
                               .onSecondaryContainer
@@ -99,7 +99,7 @@ class PopularReviewItem extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(
-                    correspondingFlag[review.region]!,
+                    correspondingFlag[review.getRegion()]!,
                     width: 25,
                     height: 25,
                   ),
@@ -108,7 +108,7 @@ class PopularReviewItem extends StatelessWidget {
                   ),
                   Text(
                     capitalizeFirstLetter(
-                        review.region.toString().substring(7)),
+                        review.getRegion().toString().substring(7)),
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: Theme.of(context)
                               .colorScheme
@@ -126,11 +126,11 @@ class PopularReviewItem extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    review.roasteryName.substring(
+                    review.getRoasteryName().substring(
                         0,
-                        review.roasteryName.length > 8
+                        review.getRoasteryName().length > 8
                             ? 8
-                            : review.roasteryName.length),
+                            : review.getRoasteryName().length),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -141,7 +141,7 @@ class PopularReviewItem extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  "${review.coffeePrice.toStringAsFixed(2)} SR",
+                  "${review.getCoffeePrice().toStringAsFixed(2)} SR",
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Theme.of(context).colorScheme.onSurface,
                         fontSize: 16,

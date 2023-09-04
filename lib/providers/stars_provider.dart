@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speciality_coffee_review/models/review_database.dart';
 
@@ -17,34 +15,16 @@ class StarsNotifier extends StateNotifier<List<String>> {
 
   void toggleStar(Review review) async {
     final reviews = await starredReviews;
-    final isStarred = reviews.any((element) => element.toString() == review.id);
+    final isStarred =
+        reviews.any((element) => element.toString() == review.getId());
 
     if (isStarred) {
       review.decrementStars();
-      FirebaseFirestore.instance.collection('reviews').doc(review.id).update({
-        'stars': review.stars,
-      });
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .update({
-        'starred': FieldValue.arrayRemove([review.id]),
-      });
-      reviews.remove(review.id);
-      state = [...reviews];
+      reviews.remove(review.getId());
     } else {
       review.incrementStars();
-      FirebaseFirestore.instance.collection('reviews').doc(review.id).update({
-        'stars': review.stars,
-      });
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .update({
-        'starred': FieldValue.arrayUnion([review.id]),
-      });
-      reviews.add(review.id);
-      state = [...reviews];
+      reviews.add(review.getId());
     }
+    state = [...reviews];
   }
 }

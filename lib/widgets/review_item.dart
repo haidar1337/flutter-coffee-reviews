@@ -30,7 +30,7 @@ class ReviewItem extends StatelessWidget {
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Image.network(
-            review.imageUrl,
+            review.getImageUrl(),
             fit: BoxFit.cover,
             width: double.infinity,
             height: 100,
@@ -40,7 +40,7 @@ class ReviewItem extends StatelessWidget {
             height: 5,
           ),
           Text(
-            review.coffeeName,
+            review.getCoffeeName(),
             maxLines: 1,
             overflow: TextOverflow.clip,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -54,7 +54,7 @@ class ReviewItem extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset(
-                  correspondingFlag[review.region]!,
+                  correspondingFlag[review.getRegion()]!,
                   width: 25,
                   height: 25,
                 ),
@@ -62,7 +62,8 @@ class ReviewItem extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  capitalizeFirstLetter(review.region.toString().substring(7)),
+                  capitalizeFirstLetter(
+                      review.getRegion().toString().substring(7)),
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Theme.of(context)
                             .colorScheme
@@ -79,7 +80,7 @@ class ReviewItem extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                review.roasteryName,
+                review.getRoasteryName(),
                 maxLines: 1,
                 overflow: TextOverflow.clip,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -93,7 +94,7 @@ class ReviewItem extends StatelessWidget {
             padding: const EdgeInsets.only(top: 5.0, left: 8.0),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: review.brewingMethod != BrewingMethod.any
+              child: review.getBrewingMethod() != BrewingMethod.any
                   ? Image.asset(
                       correspondingIcon[review.brewingMethod]!,
                       color: Theme.of(context)
@@ -136,7 +137,7 @@ class ReviewItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Text(
-                  "${review.coffeePrice.toStringAsFixed(2)} SR",
+                  "${review.getCoffeePrice().toStringAsFixed(2)} SR",
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Theme.of(context).colorScheme.onSurface,
                         fontSize: 16,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BottomSheetButtons extends StatefulWidget {
-  const BottomSheetButtons({super.key, required this.onCreatePost});
+class CreationButton extends StatefulWidget {
+  const CreationButton({super.key, required this.onCreatePost});
 
   final Future<bool> Function() onCreatePost;
 
@@ -11,7 +11,7 @@ class BottomSheetButtons extends StatefulWidget {
   }
 }
 
-class _BottomSheetButtons extends State<BottomSheetButtons> {
+class _BottomSheetButtons extends State<CreationButton> {
   var _isLoading = false;
 
   @override
@@ -38,7 +38,7 @@ class _BottomSheetButtons extends State<BottomSheetButtons> {
                                 .colorScheme
                                 .onPrimaryContainer,
                             content: Text(
-                              'Your post has been created',
+                              'Your review has been successfully posted',
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           ),

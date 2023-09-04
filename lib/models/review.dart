@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:speciality_coffee_review/models/review_database.dart';
 import 'package:speciality_coffee_review/utilities/util.dart';
 
 enum BrewingMethod {
@@ -56,11 +57,49 @@ class Review {
     return imageUrl;
   }
 
+  String getCreatedBy() {
+    return createdBy;
+  }
+
+  Timestamp getCreatedAt() {
+    return createdAt;
+  }
+
+  String getId() {
+    return id;
+  }
+
+  String getDescription() {
+    return description;
+  }
+
+  String getCoffeeName() {
+    return coffeeName;
+  }
+
+  double getCoffeePrice() {
+    return coffeePrice;
+  }
+
+  String getRoasteryName() {
+    return roasteryName;
+  }
+
+  Region getRegion() {
+    return region;
+  }
+
+  BrewingMethod getBrewingMethod() {
+    return brewingMethod;
+  }
+
   void incrementStars() {
     stars = stars + 1;
+    ReviewDatabase.incrementDBStars(this);
   }
 
   void decrementStars() {
     stars = stars - 1;
+    ReviewDatabase.decrementDBStars(this);
   }
 }

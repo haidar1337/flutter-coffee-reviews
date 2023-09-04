@@ -11,7 +11,7 @@ class StarButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stsProvider = ref.watch(starsProvider);
-    final isStarred = stsProvider.any((element) => element == review.id);
+    final isStarred = stsProvider.any((element) => element == review.getId());
     return Row(
       children: [
         IconButton(
@@ -27,7 +27,7 @@ class StarButton extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: Text(
-            review.stars.toString(),
+            review.getStars().toString(),
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Theme.of(context).colorScheme.onSurface,
                   fontSize: 16,

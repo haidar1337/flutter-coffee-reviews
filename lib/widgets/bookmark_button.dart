@@ -17,7 +17,8 @@ class BookmarkButton extends ConsumerWidget {
     final bookmarks = ref.watch(bookmarksProvider);
     bool isBookmarked = false;
     if (bookmarks.isNotEmpty) {
-      isBookmarked = bookmarks.any((element) => element.id == review.id);
+      isBookmarked =
+          bookmarks.any((element) => element.getId() == review.getId());
     }
     return IconButton(
       onPressed: () {

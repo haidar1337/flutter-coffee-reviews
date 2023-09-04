@@ -45,4 +45,28 @@ class ReviewDatabase {
     List<dynamic> starredReviews = doc.data()!['starred'];
     return starredReviews;
   }
+
+  static void incrementDBStars(Review review) {
+    FirebaseFirestore.instance.collection('reviews').doc(review.id).update({
+      'stars': review.stars,
+    });
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({
+      'starred': FieldValue.arrayUnion([review.id]),
+    });
+  }
+
+  static void decrementDBStars(Review review) {
+    FirebaseFirestore.instance.collection('reviews').doc(review.id).update({
+      'stars': review.stars,
+    });
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({
+      'starred': FieldValue.arrayRemove([review.id]),
+    });
+  }
 }

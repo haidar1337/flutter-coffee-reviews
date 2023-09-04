@@ -14,14 +14,14 @@ class PostDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(review.coffeeName),
+        title: Text(review.getCoffeeName()),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
         child: ListView(
           children: [
             Image.network(
-              review.imageUrl,
+              review.getImageUrl(),
               width: double.infinity,
               height: 300,
             ),
@@ -31,9 +31,9 @@ class PostDetailsScreen extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  review.coffeeName.length > 25
-                      ? '${review.coffeeName.substring(0, 25)}...'
-                      : review.coffeeName,
+                  review.getCoffeeName().length > 25
+                      ? '${review.getCoffeeName().substring(0, 25)}...'
+                      : review.getCoffeeName(),
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class PostDetailsScreen extends StatelessWidget {
             Row(
               children: [
                 Image.asset(
-                  correspondingFlag[review.region]!,
+                  correspondingFlag[review.getRegion()]!,
                   width: 50,
                   height: 50,
                 ),
@@ -58,14 +58,14 @@ class PostDetailsScreen extends StatelessWidget {
                 ),
                 Text(
                   capitalizeFirstLetter(
-                    review.region.toString().substring(7),
+                    review.getRegion().toString().substring(7),
                   ),
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
                 ),
                 const Spacer(),
-                review.brewingMethod == BrewingMethod.any
+                review.getBrewingMethod() == BrewingMethod.any
                     ? Row(
                         children: [
                           Image.asset(
@@ -83,7 +83,7 @@ class PostDetailsScreen extends StatelessWidget {
                         ],
                       )
                     : Image.asset(
-                        correspondingIcon[review.brewingMethod]!,
+                        correspondingIcon[review.getBrewingMethod()]!,
                         height: 50,
                         width: 50,
                         color: Theme.of(context).colorScheme.onSurface,
@@ -94,7 +94,7 @@ class PostDetailsScreen extends StatelessWidget {
               height: 5,
             ),
             Text(
-              review.roasteryName,
+              review.getRoasteryName(),
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
@@ -102,7 +102,7 @@ class PostDetailsScreen extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '${review.coffeePrice.toStringAsFixed(2)} SR',
+                  '${review.getCoffeePrice().toStringAsFixed(2)} SR',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold,
@@ -124,7 +124,9 @@ class PostDetailsScreen extends StatelessWidget {
               height: 10,
             ),
             Text(
-              review.description == '' ? 'No description' : review.description,
+              review.getDescription() == ''
+                  ? 'No description'
+                  : review.getDescription(),
               maxLines: 20,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
@@ -134,7 +136,7 @@ class PostDetailsScreen extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Created at ${review.createdAt.toDate().toString().substring(0, 10)} on ${review.createdAt.toDate().toString().substring(11, 16)} ${review.createdAt.toDate().hour >= 12 ? 'PM' : 'AM'}',
+              'Created at ${review.getCreatedAt().toDate().toString().substring(0, 10)} on ${review.getCreatedAt().toDate().toString().substring(11, 16)} ${review.getCreatedAt().toDate().hour >= 12 ? 'PM' : 'AM'}',
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
