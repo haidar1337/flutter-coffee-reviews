@@ -25,13 +25,23 @@ class PostsContent extends StatelessWidget {
         Padding(
           padding:
               const EdgeInsets.only(bottom: 5, left: 10, top: 5, right: 10),
+          child: Text(
+            'Coffee Reviews',
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
+                ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
           child: Row(
             children: [
               Text(
-                'zzz',
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                'Popular Reviews',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.onPrimary,
-                      fontWeight: FontWeight.bold,
                     ),
               ),
               const Spacer(),
@@ -53,15 +63,6 @@ class PostsContent extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Popular Reviews',
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
           ),
         ),
         Divider(

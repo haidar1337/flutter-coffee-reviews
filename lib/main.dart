@@ -35,6 +35,7 @@ class CoffeeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       darkTheme: theme,
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       home: const AuthenticationScreen(),
     );
