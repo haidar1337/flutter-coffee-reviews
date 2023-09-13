@@ -18,6 +18,7 @@ class AuthenticationHandler {
       'email': email,
       'userId': newUser.user!.uid,
       'starred': [],
+      'bookmarked': [],
     });
   }
 }

@@ -3,11 +3,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speciality_coffee_review/widgets/review_item.dart';
 import '../providers/bookmarks_provider.dart';
 
-class BookMarksScreen extends ConsumerWidget {
+class BookMarksScreen extends ConsumerStatefulWidget {
   const BookMarksScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<BookMarksScreen> createState() {
+    return _BookMarksScreenState();
+  }
+}
+
+class _BookMarksScreenState extends ConsumerState<BookMarksScreen> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(bookmarksProvider.notifier).loadBookmarks();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final bookmarkedReviews = ref.watch(bookmarksProvider);
 
     return Scaffold(

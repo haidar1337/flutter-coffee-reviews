@@ -69,4 +69,30 @@ class ReviewDatabase {
       'starred': FieldValue.arrayRemove([review.id]),
     });
   }
+
+  static void bookmarkReview(Review review) {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({
+      'bookmarked': FieldValue.arrayUnion([review.id]),
+    });
+  }
+
+  static void removeBookmark(Review review) {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({
+      'bookmarked': FieldValue.arrayRemove([review.id]),
+    });
+  }
+
+  static Future<List<dynamic>> getBookmarkedReviews() async {
+    final user = firebaseAuth.currentUser;
+    final doc =
+        await firebaseFirestore.collection('users').doc(user!.uid).get();
+    List<dynamic> starredReviews = doc.data()!['bookmarked'];
+    return starredReviews;
+  }
 }
