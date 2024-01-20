@@ -3,8 +3,8 @@
 Want to find what specialty coffee is delicious? Or want to help others finding delicious or budget friendly coffee? ☕   
 Then this app is for you!  
 
-Create a review about a specialty coffee you recently tried and share your experience on the app, and others will be able to read your review.
-Also, try saving reviews in your bookmarks so you never forget about them? You read a review and it was helpful? Star the review to support the review creator and move it up to the popular reviews' list!.
+Post a review about specialty coffee you recently tried and share your experience on the app, then others will be able to read your review.
+In addition, try saving reviews in your bookmarks so you never forget about them? You read a review and it was helpful? Star the review to support the review poster and move it up to the popular reviews' list!
 
 *More features to be added...*
 
